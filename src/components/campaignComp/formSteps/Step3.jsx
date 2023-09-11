@@ -15,20 +15,24 @@ const Step3 = ({ vehicleOptions, onNext, onPrev }) => {
   const handleChange = (e) => {
     const enteredVin = e.target.value;
     setVin(enteredVin);
-    setIsValid(validateVin(enteredVin));
+    setIsValid(checkValid(enteredVin));
   }
 
-  const validateVin = (inputVin) => {
-    const vinRegex = /^[A-HJ-NPR-Z0-9]{17}$/i;
-    return vinRegex.test(inputVin);
-  };
+  const checkValid = (vinNum) => {
+    if (vinNum.trim().length !== 0) {
+      const vinArr = vinNum.split(',');
+      if (vinArr.filter(v => v.length === 17).length === vinArr.length) return true;
+      else return false;
+    }
+    else return false;
+  }
 
   const handleNext = () => {
     if (isValid) {
       setFormData((prevData) => ({ ...prevData, vehicle_vin: vin, vehicle: vehicleData }));
       onNext();
     }
-    else showToast('missing');
+    else showToast('vin');
   }
 
   const handlePrev = () => {
@@ -60,20 +64,16 @@ const Step3 = ({ vehicleOptions, onNext, onPrev }) => {
       <div className="my-8 flex items-center justify-center">
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">VIN:</span>
+            <span className="label-text">Enter VIN(s) Seperated by Commas:</span>
           </label>
-          <input 
+          <textarea 
             type="text" 
-            placeholder="Enter VIN" 
+            placeholder="Enter VIN(s)" 
             value={vin}
             id="vehicle-vin"
             onChange={handleChange}
-            className={!isValid ? "input input-error input-bordered w-full max-w-xs ml-2" : "input input-bordered w-full max-w-xs ml-2"} />
-            {!isValid && (
-              <label className="label">
-                <span className="label-text-alt">VIN must be exactly 17 characters long.</span>
-              </label>
-            )}
+            rows={3}
+            className="textarea textarea-bordered w-full max-w-xs ml-2" />
         </div>
       </div>
       <div className="join flex items-center justify-center my-16">

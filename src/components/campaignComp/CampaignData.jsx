@@ -51,7 +51,7 @@ const CampaignData = ({ vehicleOptions, regions, campaigns, startForm }) => {
                                         <td>{JSON.parse(item.region_id).join(', ')}</td>
                                         <td>{item.vehicle_sw_config_id}</td>
                                         <td>{getVehicleDetails(item.vehicle_id)}</td>
-                                        <td>{item.vin_number}</td>
+                                        <td>{JSON.parse(item.vin_number)}</td>
                                         <td>{item.created_date || '-'}</td>
                                         <td>
                                             <button className="btn btn-circle bg-transparent border-none" onClick={() => {

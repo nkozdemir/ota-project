@@ -21,7 +21,7 @@ const FormConfig = ({ onClose, subsystems, vehicleOptions, fetchConfig }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (formData.config_name == '') showToast('missing');
+        if (formData.config_name.trim().length === 0) showToast('missing');
         else {
             setSubmitting(true);
             const requestBody = {

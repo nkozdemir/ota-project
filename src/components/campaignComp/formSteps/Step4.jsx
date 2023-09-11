@@ -23,7 +23,7 @@ const Step4 = ({ onPrev, onSubmit, submitting }) => {
   }
 
   const handleSubmit = () => {
-    if (inputFields.name !== '' && inputFields.desc !== '') {
+    if (inputFields.name.trim().length !== 0 && inputFields.desc.trim().length !== 0) {
       setFormData((prevData) => ({ ...prevData, campaign_name: inputFields.name, campaign_desc: inputFields.desc })) 
       onSubmit();
     }
