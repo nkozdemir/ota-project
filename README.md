@@ -4,6 +4,11 @@
 Created a dashboard application which simulates updating vehicle software over the air. 
 
 
+## Archive Notice
+
+**This repository is now archived. The internship project has been successfully completed, and no further active development is planned.**
+
+
 ## Authors
 
 - [@nkozdemir](https://github.com/nkozdemir)
@@ -14,6 +19,8 @@ Created a dashboard application which simulates updating vehicle software over t
 **Client:** React, TailwindCSS, daisyUI
 
 **Backend:** AWS RDS, AWS Lambda, AWS API Gateway
+
+- AWS Lambda codes can be accessed from [this](https://github.com/nkozdemir/ota-lambdas.git) repository.
 
 **Deployment:** AWS Amplify
 
